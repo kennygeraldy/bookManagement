@@ -2,7 +2,6 @@ package com.example.book_management_system.controller;
 
 
 import com.example.book_management_system.entity.AuthorEntity;
-import com.example.book_management_system.entity.BookEntity;
 import com.example.book_management_system.service.AuthorService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
+
 import java.util.*;
 
 @RestController
@@ -28,7 +27,7 @@ public class AuthorsCotroller {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AuthorEntity> getBookById(
+    public ResponseEntity<AuthorEntity> getAuhtorById(
             @PathVariable Long id
     ){
         AuthorEntity author = authorService.getAuthorById(id);
@@ -41,18 +40,18 @@ public class AuthorsCotroller {
 
     //  Create Author
     @PostMapping
-    public AuthorEntity createEmployee(@RequestBody AuthorEntity author) {
+    public AuthorEntity createAuthor(@RequestBody AuthorEntity author) {
         return authorService.saveAuthor(author);
     }
 
     //   Put Author
     @PutMapping("/{id}")
-    public ResponseEntity<AuthorEntity> updateEmployee(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
+    public ResponseEntity<AuthorEntity> updateAuhtor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
-            author.setAuthor(author.getAuthor());
-            author.setId(author.getId());
-            author.setBio(author.getBio());
+            author.setAuthor(authorDetails.getAuthor());
+            author.setId(authorDetails.getId());
+            author.setBio(authorDetails.getBio());
             AuthorEntity updatedAuthor = authorService.saveAuthor(author);
             return ResponseEntity.ok(updatedAuthor);
         } else {
