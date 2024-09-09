@@ -49,6 +49,5 @@ public class AuthorServiceImplementation implements AuthorService {
     @Override
     public Page<AuthorEntity> getAuthors(Pageable pageable) {
         return authorRepository.findAll(pageable);
-
     }
 }

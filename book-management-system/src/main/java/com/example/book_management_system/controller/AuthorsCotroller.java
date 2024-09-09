@@ -4,9 +4,11 @@ package com.example.book_management_system.controller;
 import com.example.book_management_system.entity.AuthorEntity;
 import com.example.book_management_system.entity.BookEntity;
 import com.example.book_management_system.service.AuthorService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,4 +77,14 @@ public class AuthorsCotroller {
         return authorService.getAuthors(pageable);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAuthor(@PathVariable Long id) {
+        AuthorEntity author = authorService.getAuthorById(id);
+        if (author != null) {
+            authorService.deleteAuthor(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
