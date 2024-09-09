@@ -16,7 +16,12 @@ public class BookEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "title", nullable = false)
     @JsonProperty("title")
+    private String title;
+
+    @Column(name = "isbn", nullable = false)
+    @JsonProperty("isbn")
     private String isbn;
 
     @JoinColumn(name = "author_id", referencedColumnName = "Id")
