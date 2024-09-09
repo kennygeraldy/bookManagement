@@ -22,6 +22,7 @@ public class GenreController {
         return genreService.getAllGenres();
     }
 
+//  Get Genre By Id
     @GetMapping("/{id}")
     public ResponseEntity<GenreEntity> getGenreById(
             @PathVariable Long id
@@ -34,7 +35,7 @@ public class GenreController {
         }
     }
 
-    //  Create Genre
+//  Create Genre
     @PostMapping
     public GenreEntity createGenre(@RequestBody GenreEntity genre) {
         return genreService.saveGenre(genre);
@@ -63,7 +64,9 @@ public class GenreController {
 
 //  Delete genre by id
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteGenre(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteGenre(
+            @PathVariable Long id
+    ) {
         GenreEntity genre = genreService.getGenreById(id);
         if (genre != null) {
             genreService.deleteGenre(id);

@@ -9,17 +9,15 @@ import java.util.List;
 
 @Component
 public interface AuthorService {
+
     List<AuthorEntity> getAllAuthors();
 
     AuthorEntity getAuthorById(Long id) ;
 
-
     AuthorEntity saveAuthor(AuthorEntity author) ;
 
-
-    void deleteAuthor(Long id) ;
-
-    AuthorEntity getAuthorByName(String author);
+    void deleteAuthor(Long id);
 
     Page<AuthorEntity> getAuthors(Pageable pageable) ;
 }
+

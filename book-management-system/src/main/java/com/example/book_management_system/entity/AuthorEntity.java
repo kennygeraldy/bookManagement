@@ -7,10 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "author")
 @Getter
 @Setter
-
+@Table(name = "authors")
 public class AuthorEntity {
 
     @Id
@@ -27,6 +26,6 @@ public class AuthorEntity {
     private String bio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    private AuthorEntity author_id;
+    @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
+    private BookEntity book;
 }

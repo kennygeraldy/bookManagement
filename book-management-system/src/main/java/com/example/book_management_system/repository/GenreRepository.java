@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface GenreRepository extends JpaRepository<GenreEntity, Long> {
 
-    Optional<GenreEntity> findByNameIgnoreCase(String genreName);
+    Optional<GenreEntity> findByGenreIgnoreCase(String genre);
 
     Page<GenreEntity> findAll(Pageable pageable);
 }

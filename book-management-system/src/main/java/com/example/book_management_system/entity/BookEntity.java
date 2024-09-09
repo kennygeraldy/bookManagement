@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Setter
 @Getter
-@Table(name = "book")
+@Table(name = "books")
 public class BookEntity {
 
     @Id
@@ -28,12 +28,12 @@ public class BookEntity {
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     @JsonProperty("author")
-    private BookEntity author;
+    private AuthorEntity author;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     @JsonProperty("genre")
-    private BookEntity genre;
+    private GenreEntity genre;
 
     @Column(name = "publish_date", nullable = false)
     @JsonProperty("publish_date")
