@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorsCotroller.java
 
-=======
->>>>>>> 44487ccbd6b3207b2dd9adca6068f7a2be1d1a8b:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorController.java
 import java.util.*;
 
 @RestController
@@ -26,11 +23,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-<<<<<<< HEAD:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorsCotroller.java
-    public ResponseEntity<AuthorEntity> getAuhtorById(
-=======
     public ResponseEntity<AuthorEntity> getAuthorById(
->>>>>>> 44487ccbd6b3207b2dd9adca6068f7a2be1d1a8b:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorController.java
             @PathVariable Long id
     ){
         AuthorEntity author = authorService.getAuthorById(id);
@@ -49,11 +42,7 @@ public class AuthorController {
 
     //   Put Author
     @PutMapping("/{id}")
-<<<<<<< HEAD:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorsCotroller.java
-    public ResponseEntity<AuthorEntity> updateAuhtor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
-=======
     public ResponseEntity<AuthorEntity> updateAuthor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
->>>>>>> 44487ccbd6b3207b2dd9adca6068f7a2be1d1a8b:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorController.java
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
             author.setAuthor(authorDetails.getAuthor());
