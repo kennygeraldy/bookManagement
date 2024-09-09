@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.print.Book;
 
 @RestController
 @RequestMapping("/api/books")
@@ -35,8 +34,41 @@ public class BookController {
         }
     }
 
+//  Create Employee
+    @PostMapping
+    public BookEntity createEmployee(@RequestBody BookEntity employee) {
+        return bookService.saveBook(book);
+    }
 
-    // Get all books with pagination
+//   Put Books
+    @PutMapping("/{id}")
+    public ResponseEntity<BookEntity> updateEmployee(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
+        BookEntity book = bookService.getBookById(id);
+        if (book != null) {
+            book.setTitle(bookDetails.getTitle());
+            book.setGenre(bookDetails.getGenre());
+            book.setAuthor(bookDetails.getAuthor());
+            book.setIsbn(bookDetails.getIsbn());
+            book.setPublish_date(bookDetails.getPublish_date());
+            BookEntity updatedEmployee = bookService.saveBook(book);
+            return ResponseEntity.ok(updatedEmployee);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+// Search book by title
+    @GetMapping("/search")
+    public ResponseEntity<Book> getBookByTitle(@RequestParam(name = "title") String title) {
+        BookEntity book = bookService.getBookByTitle(title);
+        if (book != null) {
+            return ResponseEntity.ok(book);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+//   Get all books with pagination
     @GetMapping("/page")
     public Page<BookEntity> getAllBooks(Pageable pageable) {
         return bookService.getBooks(pageable);
