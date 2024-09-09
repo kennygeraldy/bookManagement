@@ -3,20 +3,19 @@ package com.example.book_management_system.controller;
 
 import com.example.book_management_system.entity.AuthorEntity;
 import com.example.book_management_system.service.AuthorService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorsCotroller.java
 
+=======
+>>>>>>> 44487ccbd6b3207b2dd9adca6068f7a2be1d1a8b:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorController.java
 import java.util.*;
 
 @RestController
 @RequestMapping("/api/author")
-public class AuthorsCotroller {
+public class AuthorController {
 
     @Autowired
     private AuthorService authorService;
@@ -27,7 +26,11 @@ public class AuthorsCotroller {
     }
 
     @GetMapping("/{id}")
+<<<<<<< HEAD:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorsCotroller.java
     public ResponseEntity<AuthorEntity> getAuhtorById(
+=======
+    public ResponseEntity<AuthorEntity> getAuthorById(
+>>>>>>> 44487ccbd6b3207b2dd9adca6068f7a2be1d1a8b:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorController.java
             @PathVariable Long id
     ){
         AuthorEntity author = authorService.getAuthorById(id);
@@ -46,7 +49,11 @@ public class AuthorsCotroller {
 
     //   Put Author
     @PutMapping("/{id}")
+<<<<<<< HEAD:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorsCotroller.java
     public ResponseEntity<AuthorEntity> updateAuhtor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
+=======
+    public ResponseEntity<AuthorEntity> updateAuthor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
+>>>>>>> 44487ccbd6b3207b2dd9adca6068f7a2be1d1a8b:book-management-system/src/main/java/com/example/book_management_system/controller/AuthorController.java
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
             author.setAuthor(authorDetails.getAuthor());

@@ -19,7 +19,7 @@ public interface AuthorService {
 
     void deleteAuthor(Long id) ;
 
-    AuthorEntity getAuthorByName(String name);
+    AuthorEntity getAuthorByName(String author);
 
     Page<AuthorEntity> getAuthors(Pageable pageable) ;
 }

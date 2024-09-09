@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.List;
 @Service
 @Slf4j
 
-public class AuthorServiceImplementation implements AuthorService {
+public class AuthorServiceImpl implements AuthorService {
 
     @Autowired
     private AuthorRepository authorRepository;
@@ -41,8 +40,8 @@ public class AuthorServiceImplementation implements AuthorService {
     }
 
     // case in-sensitive search
-    public AuthorEntity getAuthorByName(String firstName) {
-        return authorRepository.findByNameIgnoreCase(firstName).orElse(null);
+    public AuthorEntity getAuthorByName(String author) {
+        return authorRepository.findByNameIgnoreCase(author).orElse(null);
     }
 
 

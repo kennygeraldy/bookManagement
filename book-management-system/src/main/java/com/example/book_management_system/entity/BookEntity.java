@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Setter
 @Getter
+@Table(name = "book")
 public class BookEntity {
 
     @Id
@@ -24,11 +25,13 @@ public class BookEntity {
     @JsonProperty("isbn")
     private String isbn;
 
-    @JoinColumn(name = "author_id", referencedColumnName = "Id")
+    @ManyToOne(fetch =  FetchType.LAZY)
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     @JsonProperty("author")
     private BookEntity author;
 
-    @JoinColumn(name = "genre_id", referencedColumnName = "Id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genre_id", referencedColumnName = "id")
     @JsonProperty("genre")
     private BookEntity genre;
 
