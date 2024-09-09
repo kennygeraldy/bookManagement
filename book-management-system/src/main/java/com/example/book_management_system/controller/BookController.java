@@ -38,7 +38,11 @@ public class BookController {
 
 //  Create Book
     @PostMapping
+<<<<<<< HEAD
+    public BookEntity createEmployee(@RequestBody BookEntity book) {
+=======
     public BookEntity createBook(@RequestBody BookEntity book) {
+>>>>>>> d0fcab2028035db7011d213ed811336e1b817e83
         return bookService.saveBook(book);
     }
 
