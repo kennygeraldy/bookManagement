@@ -39,13 +39,13 @@ public class AuthorsCotroller {
         }
     }
 
-    //  Create Employee
+    //  Create Author
     @PostMapping
     public AuthorEntity createEmployee(@RequestBody AuthorEntity author) {
         return authorService.saveAuthor(author);
     }
 
-    //   Put Books
+    //   Put Author
     @PutMapping("/{id}")
     public ResponseEntity<AuthorEntity> updateEmployee(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
         AuthorEntity author = authorService.getAuthorById(id);
@@ -60,23 +60,7 @@ public class AuthorsCotroller {
         }
     }
 
-    // Search book by title
-    @GetMapping("/search")
-    public ResponseEntity<AuthorEntity> getAuthorByName(@RequestParam(name = "author") String name) {
-        AuthorEntity author = authorService.getAuthorByName(name);
-        if (author != null) {
-            return ResponseEntity.ok(author);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    //   Get all books with pagination
-    @GetMapping("/page")
-    public Page<AuthorEntity> getAllBooks(Pageable pageable) {
-        return authorService.getAuthors(pageable);
-    }
-
+    // Delete Author
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAuthor(@PathVariable Long id) {
         AuthorEntity author = authorService.getAuthorById(id);
