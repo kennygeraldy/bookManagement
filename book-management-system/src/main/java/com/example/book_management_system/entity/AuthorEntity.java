@@ -25,4 +25,8 @@ public class AuthorEntity {
     @Column( name = "bio")
     @JsonProperty("bio")
     private String bio;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    private BookEntity book;
 }
