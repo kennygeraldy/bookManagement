@@ -1,6 +1,5 @@
 package com.example.book_management_system.controller;
 
-
 import com.example.book_management_system.entity.GenreEntity;
 import com.example.book_management_system.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,7 @@ public class GenreController {
     //   Put Genres
     @PutMapping("/{id}")
     public ResponseEntity<GenreEntity> updateGenre(@PathVariable Long id, @RequestBody GenreEntity genreDetails) {
-        GenreEntity genre = genreEntity.getGenreById(id);
+        GenreEntity genre = genreService.getGenreById(id);
         if (genre != null) {
             genre.setBook(genreDetails.getBook());
             genre.setGenre(genreDetails.getGenre());
@@ -55,12 +54,12 @@ public class GenreController {
         }
     }
 
-    // Search book by genre
+    // Search genre by name
     @GetMapping("/search")
-    public ResponseEntity<GenreEntity> getBookByGenre(@RequestParam(name = "title") String genre) {
-        GenreEntity genre = genreService.getGenreByGenre(genre);
-        if (genre != null) {
-            return ResponseEntity.ok(genre);
+    public ResponseEntity<GenreEntity> getGenreByName(@RequestParam(name = "genre") String genre) {
+        GenreEntity genres = genreService.getGenreByName(genre);
+        if (genres != null) {
+            return ResponseEntity.ok(genres);
         } else {
             return ResponseEntity.notFound().build();
         }

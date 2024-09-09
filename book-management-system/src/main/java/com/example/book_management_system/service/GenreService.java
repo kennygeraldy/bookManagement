@@ -18,7 +18,7 @@ public interface GenreService {
 
     void deleteGenre(Long id);
 
-    GenreEntity getGenreByName (String name);
+    GenreEntity getGenreByName (String genre);
 
     Page<GenreEntity> getGenres(Pageable pageable);
 }
