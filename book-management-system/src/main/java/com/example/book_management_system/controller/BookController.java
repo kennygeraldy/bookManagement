@@ -1,6 +1,5 @@
 package com.example.book_management_system.controller;
 
-
 import com.example.book_management_system.entity.BookEntity;
 import com.example.book_management_system.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -74,6 +72,18 @@ public class BookController {
     @GetMapping("/page")
     public Page<BookEntity> getAllBooks(Pageable pageable) {
         return bookService.getBooks(pageable);
+    }
+
+//   Delete book by id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
+        BookEntity genre = bookService.getBookById(id);
+        if (genre != null) {
+            bookService.deleteBook(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

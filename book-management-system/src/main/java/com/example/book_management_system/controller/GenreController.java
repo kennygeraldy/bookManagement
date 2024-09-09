@@ -54,21 +54,22 @@ public class GenreController {
         }
     }
 
-    // Search genre by name
-    @GetMapping("/search")
-    public ResponseEntity<GenreEntity> getGenreByName(@RequestParam(name = "genre") String genre) {
-        GenreEntity genres = genreService.getGenreByName(genre);
-        if (genres != null) {
-            return ResponseEntity.ok(genres);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
     //   Get all genres with pagination
-    @GetMapping("/page")
+    @GetMapping()
     public Page<GenreEntity> getAllGenres(Pageable pageable) {
         return genreService.getGenres(pageable);
     }
 
+
+//  Delete genre by id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteGenre(@PathVariable Long id) {
+        GenreEntity genre = genreService.getGenreById(id);
+        if (genre != null) {
+            genreService.deleteGenre(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
