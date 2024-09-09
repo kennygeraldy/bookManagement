@@ -2,22 +2,16 @@ package com.example.book_management_system.controller;
 
 
 import com.example.book_management_system.entity.AuthorEntity;
-import com.example.book_management_system.entity.BookEntity;
 import com.example.book_management_system.service.AuthorService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
 import java.util.*;
 
 @RestController
 @RequestMapping("/api/author")
-public class AuthorsCotroller {
+public class AuthorController {
 
     @Autowired
     private AuthorService authorService;
@@ -28,7 +22,7 @@ public class AuthorsCotroller {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AuthorEntity> getBookById(
+    public ResponseEntity<AuthorEntity> getAuthorById(
             @PathVariable Long id
     ){
         AuthorEntity author = authorService.getAuthorById(id);
@@ -41,13 +35,13 @@ public class AuthorsCotroller {
 
     //  Create Author
     @PostMapping
-    public AuthorEntity createEmployee(@RequestBody AuthorEntity author) {
+    public AuthorEntity createAuthor(@RequestBody AuthorEntity author) {
         return authorService.saveAuthor(author);
     }
 
     //   Put Author
     @PutMapping("/{id}")
-    public ResponseEntity<AuthorEntity> updateEmployee(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
+    public ResponseEntity<AuthorEntity> updateAuthor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
             author.setAuthor(author.getAuthor());
