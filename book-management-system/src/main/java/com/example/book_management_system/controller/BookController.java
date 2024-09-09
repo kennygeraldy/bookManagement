@@ -36,7 +36,7 @@ public class BookController {
 
 //  Create Employee
     @PostMapping
-    public BookEntity createEmployee(@RequestBody BookEntity employee) {
+    public BookEntity createEmployee(@RequestBody BookEntity book) {
         return bookService.saveBook(book);
     }
 
