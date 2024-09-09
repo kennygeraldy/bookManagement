@@ -2,6 +2,7 @@ package com.example.book_management_system.controller;
 
 
 import com.example.book_management_system.entity.BookEntity;
+import com.example.book_management_system.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Book;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
@@ -34,15 +36,19 @@ public class BookController {
         }
     }
 
-//  Create Employee
+//  Create Book
     @PostMapping
+<<<<<<< HEAD
     public BookEntity createEmployee(@RequestBody BookEntity book) {
+=======
+    public BookEntity createBook(@RequestBody BookEntity book) {
+>>>>>>> d0fcab2028035db7011d213ed811336e1b817e83
         return bookService.saveBook(book);
     }
 
 //   Put Books
     @PutMapping("/{id}")
-    public ResponseEntity<BookEntity> updateEmployee(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
+    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
         BookEntity book = bookService.getBookById(id);
         if (book != null) {
             book.setTitle(bookDetails.getTitle());
@@ -50,8 +56,8 @@ public class BookController {
             book.setAuthor(bookDetails.getAuthor());
             book.setIsbn(bookDetails.getIsbn());
             book.setPublish_date(bookDetails.getPublish_date());
-            BookEntity updatedEmployee = bookService.saveBook(book);
-            return ResponseEntity.ok(updatedEmployee);
+            BookEntity updatedBook = bookService.saveBook(book);
+            return ResponseEntity.ok(updatedBook);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -59,7 +65,7 @@ public class BookController {
 
 // Search book by title
     @GetMapping("/search")
-    public ResponseEntity<Book> getBookByTitle(@RequestParam(name = "title") String title) {
+    public ResponseEntity<BookEntity> getBookByTitle(@RequestParam(name = "title") String title) {
         BookEntity book = bookService.getBookByTitle(title);
         if (book != null) {
             return ResponseEntity.ok(book);
