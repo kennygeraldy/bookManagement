@@ -1,4 +1,4 @@
-package entitiy;
+package com.example.book_management_system.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
