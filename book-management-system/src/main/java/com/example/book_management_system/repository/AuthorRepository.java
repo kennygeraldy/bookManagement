@@ -9,8 +9,8 @@ import java.util.Optional;
 
 public interface AuthorRepository extends JpaRepository<AuthorEntity, Long> {
 
-//    Optional<AuthorEntity> findByfirstName(String firstName);
-    Optional<AuthorEntity> findByfirstNameIgnoreCase(String firstName);
+//    Optional<AuthorEntity> findByName(String firstName);
+    Optional<AuthorEntity> findByNameIgnoreCase(String firstName);
     // Find all employees with pagination
     Page<AuthorEntity> findAll(Pageable pageable);
 }
