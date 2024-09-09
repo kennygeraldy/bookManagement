@@ -1,5 +1,6 @@
 package com.example.book_management_system.service.impl;
 
+import com.example.book_management_system.entity.AuthorEntity;
 import com.example.book_management_system.entity.GenreEntity;
 import com.example.book_management_system.repository.GenreRepository;
 import com.example.book_management_system.service.GenreService;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class GenreServiceImpl implements GenreService {
+
 
     @Autowired
     private GenreRepository genreRepository;
@@ -34,8 +36,8 @@ public class GenreServiceImpl implements GenreService {
         genreRepository.deleteById(id);
     }
 
-    public GenreEntity getGenreByName(String name) {
-        return genreRepository.findByNameIgnoreCase(name).orElse(null);
+    public GenreEntity getGenreByName(String genre) {
+        return genreRepository.findByNameIgnoreCase(genre).orElse(null);
     }
 
     @Override
