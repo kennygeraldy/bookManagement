@@ -28,5 +28,5 @@ public class AuthorEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    private BookEntity book;
+    private AuthorEntity author_id;
 }
