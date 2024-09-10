@@ -58,9 +58,9 @@ public class BookController {
         }
     }
 
-// Search book by title
+// Search book by title/author/genre
     @GetMapping("/search")
-    public ResponseEntity<BookEntity> getBookByTitle(
+    public ResponseEntity<BookEntity> getBookByTitleOrAuthorOrGenre(
             @RequestParam (name = "title", required = false, defaultValue = "") String title,
             @RequestParam (name = "author", required = false, defaultValue = "") String author,
             @RequestParam (name = "genre", required = false, defaultValue = "") String genre

@@ -18,12 +18,12 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
 
     @Query(
             value = "select b.* " +
-                    "from book b " +
-                    "join author a on a.id = b.author_id " +
-                    "join genre g on g.id = b.genre_id " +
+                    "from books b " +
+                    "join authors a on a.id = b.author_id " +
+                    "join genres g on g.id = b.genre_id " +
                     "where b.title like :title or " +
-                    "a.name like :author or " +
-                    "g.name like :genre;",
+                    "a.author like :author or " +
+                    "g.genre like :genre;",
             nativeQuery = true
     )
     BookEntity findByTitleOrAuthorOrGenre(@Param("title") String title, @Param("author") String author, @Param("genre") String genre);
