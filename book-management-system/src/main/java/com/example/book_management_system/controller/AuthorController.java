@@ -42,21 +42,20 @@ public class AuthorController{
     }
 
     //   Put Author
-//    @PutMapping("/{id}")
-//    public ResponseEntity<AuthorEntity> updateAuthor(
-//            @PathVariable Long id,
-//            @RequestBody AuthorEntity authorDetails) {
-//        AuthorEntity author = authorService.getAuthorById(id);
-//        if (author != null) {
-//            author.setAuthor(authorDetails.getAuthor());
-//            author.setBio(authorDetails.getBio());
-//            author.setBook(authorDetails.getBook());
-//            AuthorEntity updatedAuthor = authorService.saveAuthor(author);
-//            return ResponseEntity.ok(updatedAuthor);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<AuthorEntity> updateAuthor(
+            @PathVariable Long id,
+            @RequestBody AuthorEntity authorDetails) {
+        AuthorEntity author = authorService.getAuthorById(id);
+        if (author != null) {
+            author.setAuthor(authorDetails.getAuthor());
+            author.setBio(authorDetails.getBio());
+            AuthorEntity updatedAuthor = authorService.saveAuthor(author);
+            return ResponseEntity.ok(updatedAuthor);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     //   Get all genres with pagination
     @GetMapping("/page")
@@ -66,14 +65,28 @@ public class AuthorController{
 
 
     //  Delete genre by id
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteAuthor(
+//            @PathVariable Long id
+//    ) {
+//        AuthorEntity author = authorService.getAuthorById(id);
+//        if (author != null) {
+//            authorService.deleteAuthor(id);
+//            return ResponseEntity.ok().build();
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAuthor(
+    public ResponseEntity<List<AuthorEntity>> deleteAuthor(
             @PathVariable Long id
     ) {
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
             authorService.deleteAuthor(id);
-            return ResponseEntity.ok().build();
+            List<AuthorEntity> remainingAuthors = authorService.getAllAuthors(); // Assuming this method returns the updated list of authors
+            return ResponseEntity.ok(remainingAuthors);
         } else {
             return ResponseEntity.notFound().build();
         }
