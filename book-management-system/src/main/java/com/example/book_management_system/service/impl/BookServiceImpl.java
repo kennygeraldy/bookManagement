@@ -34,17 +34,9 @@ public class BookServiceImpl implements BookService {
         bookRepository.deleteById(id);
     }
 
-    public BookEntity getBookByTitle(String title) {
-        return bookRepository.findByTitleIgnoreCase(title).orElse(null);
+    public BookEntity getBookByTitleOrAuthorOrGenre(String title, String author, String genre){
+        return bookRepository.findByTitleOrAuthorOrGenre(title, author, genre);
     }
-
-//    public BookEntity getBookByAuthor(String author) {
-//        return bookRepository.findByAuthorIgnoreCase(author).orElse(null);
-//    }
-//
-//    public BookEntity getBookByGenre(String genre) {
-//        return bookRepository.findByGenreIgnoreCase(genre).orElse(null);
-//    }
 
     @Override
     public Page<BookEntity> getBooks(Pageable pageable) { return bookRepository.findAll(pageable); }

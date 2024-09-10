@@ -18,11 +18,7 @@ public interface BookService {
 
     void deleteBook(Long id);
 
-    BookEntity getBookByTitle (String title);
-
-//    BookEntity getBookByAuthor (String author);
-//
-//    BookEntity getBookByGenre (String genre);
+    BookEntity getBookByTitleOrAuthorOrGenre (String title, String author, String genre);
 
     Page<BookEntity> getBooks(Pageable pageable);
 }

@@ -60,8 +60,12 @@ public class BookController {
 
 // Search book by title
     @GetMapping("/search")
-    public ResponseEntity<BookEntity> getBookByTitle(@RequestParam(name = "title") String title) {
-        BookEntity book = bookService.getBookByTitle(title);
+    public ResponseEntity<BookEntity> getBookByTitle(
+            @RequestParam (name = "title", required = false, defaultValue = "") String title,
+            @RequestParam (name = "author", required = false, defaultValue = "") String author,
+            @RequestParam (name = "genre", required = false, defaultValue = "") String genre
+    ){
+        BookEntity book = bookService.getBookByTitleOrAuthorOrGenre(title, author, genre);
         if (book != null) {
             return ResponseEntity.ok(book);
         } else {
