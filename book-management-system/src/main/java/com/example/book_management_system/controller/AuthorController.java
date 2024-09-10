@@ -65,28 +65,14 @@ public class AuthorController{
 
 
     //  Delete genre by id
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteAuthor(
-//            @PathVariable Long id
-//    ) {
-//        AuthorEntity author = authorService.getAuthorById(id);
-//        if (author != null) {
-//            authorService.deleteAuthor(id);
-//            return ResponseEntity.ok().build();
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<List<AuthorEntity>> deleteAuthor(
+    public ResponseEntity<Void> deleteAuthor(
             @PathVariable Long id
     ) {
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
             authorService.deleteAuthor(id);
-            List<AuthorEntity> remainingAuthors = authorService.getAllAuthors(); // Assuming this method returns the updated list of authors
-            return ResponseEntity.ok(remainingAuthors);
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
