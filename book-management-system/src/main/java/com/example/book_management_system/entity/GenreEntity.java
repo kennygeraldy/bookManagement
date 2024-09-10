@@ -1,5 +1,6 @@
 package com.example.book_management_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class GenreEntity {
     @JsonProperty("genre")
     private String genre;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
     private BookEntity book;
