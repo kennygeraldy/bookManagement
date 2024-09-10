@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/authors")
-public class AuthorController {
+public class AuthorController{
 
     @Autowired
     private AuthorService authorService;
@@ -59,7 +59,7 @@ public class AuthorController {
     }
 
     //   Get all genres with pagination
-    @GetMapping()
+    @GetMapping("/page")
     public Page<AuthorEntity> getAllAuthors(Pageable pageable) {
         return authorService.getAuthors(pageable);
     }

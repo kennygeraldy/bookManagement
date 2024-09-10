@@ -56,7 +56,7 @@ public class GenreController {
     }
 
     //   Get all genres with pagination
-    @GetMapping()
+    @GetMapping("/page")
     public Page<GenreEntity> getAllGenres(Pageable pageable) {
         return genreService.getGenres(pageable);
     }
