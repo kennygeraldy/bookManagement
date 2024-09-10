@@ -26,8 +26,4 @@ public class AuthorEntity {
     @JsonProperty("bio")
     private String bio;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
-    private BookEntity book;
 }

@@ -42,21 +42,21 @@ public class AuthorController{
     }
 
     //   Put Author
-    @PutMapping("/{id}")
-    public ResponseEntity<AuthorEntity> updateAuthor(
-            @PathVariable Long id,
-            @RequestBody AuthorEntity authorDetails) {
-        AuthorEntity author = authorService.getAuthorById(id);
-        if (author != null) {
-            author.setAuthor(authorDetails.getAuthor());
-            author.setBio(authorDetails.getBio());
-            author.setBook(authorDetails.getBook());
-            AuthorEntity updatedAuthor = authorService.saveAuthor(author);
-            return ResponseEntity.ok(updatedAuthor);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<AuthorEntity> updateAuthor(
+//            @PathVariable Long id,
+//            @RequestBody AuthorEntity authorDetails) {
+//        AuthorEntity author = authorService.getAuthorById(id);
+//        if (author != null) {
+//            author.setAuthor(authorDetails.getAuthor());
+//            author.setBio(authorDetails.getBio());
+//            author.setBook(authorDetails.getBook());
+//            AuthorEntity updatedAuthor = authorService.saveAuthor(author);
+//            return ResponseEntity.ok(updatedAuthor);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     //   Get all genres with pagination
     @GetMapping("/page")

@@ -22,9 +22,4 @@ public class GenreEntity {
     @JsonProperty("genre")
     private String genre;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
-    private BookEntity book;
-
 }
