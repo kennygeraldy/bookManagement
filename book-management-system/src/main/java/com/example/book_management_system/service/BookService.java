@@ -20,9 +20,9 @@ public interface BookService {
 
     BookEntity getBookByTitle (String title);
 
-    BookEntity getBookByAuthor (String author);
-
-    BookEntity getBookByGenre (String genre);
+//    BookEntity getBookByAuthor (String author);
+//
+//    BookEntity getBookByGenre (String genre);
 
     Page<BookEntity> getBooks(Pageable pageable);
 }

@@ -36,9 +36,9 @@ public class GenreServiceImpl implements GenreService {
         genreRepository.deleteById(id);
     }
 
-    public GenreEntity getGenreByName(String genre) {
-        return genreRepository.findByNameIgnoreCase(genre).orElse(null);
-    }
+//    public GenreEntity getGenreByName(String genre) {
+//        return genreRepository.findByNameIgnoreCase(genre).orElse(null);
+//    }
 
     @Override
     public Page<GenreEntity> getGenres(Pageable pageable) { return genreRepository.findAll(pageable); }

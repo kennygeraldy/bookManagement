@@ -40,9 +40,9 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     // case in-sensitive search
-    public AuthorEntity getAuthorByName(String author) {
-        return authorRepository.findByNameIgnoreCase(author).orElse(null);
-    }
+//    public AuthorEntity getAuthorByName(String author) {
+//        return authorRepository.findByNameIgnoreCase(author).orElse(null);
+//    }
 
 
     @Override

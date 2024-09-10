@@ -38,13 +38,13 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findByTitleIgnoreCase(title).orElse(null);
     }
 
-    public BookEntity getBookByAuthor(String author) {
-        return bookRepository.findByAuthorIgnoreCase(author).orElse(null);
-    }
-
-    public BookEntity getBookByGenre(String genre) {
-        return bookRepository.findByGenreIgnoreCase(genre).orElse(null);
-    }
+//    public BookEntity getBookByAuthor(String author) {
+//        return bookRepository.findByAuthorIgnoreCase(author).orElse(null);
+//    }
+//
+//    public BookEntity getBookByGenre(String genre) {
+//        return bookRepository.findByGenreIgnoreCase(genre).orElse(null);
+//    }
 
     @Override
     public Page<BookEntity> getBooks(Pageable pageable) { return bookRepository.findAll(pageable); }
