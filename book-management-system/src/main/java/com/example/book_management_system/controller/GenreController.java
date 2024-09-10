@@ -42,18 +42,17 @@ public class GenreController {
     }
 
     //   Put Genres
-//    @PutMapping("/{id}")
-//    public ResponseEntity<GenreEntity> updateGenre(@PathVariable Long id, @RequestBody GenreEntity genreDetails) {
-//        GenreEntity genre = genreService.getGenreById(id);
-//        if (genre != null) {
-//            genre.setBook(genreDetails.getBook());
-//            genre.setGenre(genreDetails.getGenre());
-//            GenreEntity updatedGenre = genreService.saveGenre(genre);
-//            return ResponseEntity.ok(updatedGenre);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<GenreEntity> updateGenre(@PathVariable Long id, @RequestBody GenreEntity genreDetails) {
+        GenreEntity genre = genreService.getGenreById(id);
+        if (genre != null) {
+            genre.setGenre(genreDetails.getGenre());
+            GenreEntity updatedGenre = genreService.saveGenre(genre);
+            return ResponseEntity.ok(updatedGenre);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     //   Get all genres with pagination
     @GetMapping("/page")

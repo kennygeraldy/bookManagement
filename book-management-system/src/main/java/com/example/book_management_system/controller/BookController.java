@@ -42,21 +42,21 @@ public class BookController {
     }
 
 //   Put Books
-//    @PutMapping("/{id}")
-//    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
-//        BookEntity book = bookService.getBookById(id);
-//        if (book != null) {
-//            book.setTitle(bookDetails.getTitle());
-//            book.setGenre(bookDetails.getGenre());
-//            book.setAuthor(bookDetails.getAuthor());
-//            book.setIsbn(bookDetails.getIsbn());
-//            book.setPublish_date(bookDetails.getPublish_date());
-//            BookEntity updatedBook = bookService.saveBook(book);
-//            return ResponseEntity.ok(updatedBook);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
+        BookEntity book = bookService.getBookById(id);
+        if (book != null) {
+            book.setTitle(bookDetails.getTitle());
+            book.setGenre(bookDetails.getGenre());
+            book.setAuthor(bookDetails.getAuthor());
+            book.setIsbn(bookDetails.getIsbn());
+            book.setPublish_date(bookDetails.getPublish_date());
+            BookEntity updatedBook = bookService.saveBook(book);
+            return ResponseEntity.ok(updatedBook);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 // Search book by title
     @GetMapping("/search")
